@@ -8,6 +8,10 @@
 	max-width: 102%;
 	padding: 20px 0 100px;
 }
+#appearance h2,
+.search-form {
+	display: inline-block;
+}
 /**
  * Main theme element
  * (has flexible margins)
@@ -80,6 +84,42 @@
  */
 .theme.active .theme-screenshot {
 	overflow-y: scroll;
+}
+/*
+ * Add new theme
+ */
+.theme.add-new .theme-screenshot {
+	background: #fff;
+}
+.theme.add-new .theme-screenshot span {
+	color: #999;
+	font-size: 18px;
+	position: absolute;
+		top: 40%;
+	text-align: center;
+	width: 100%;
+}
+.theme.add-new .theme-screenshot span:before {
+	font: normal 30px/1 'dashicons' !important;
+	color: #bbb;
+	display: inline-block;
+	content: '\f132';
+	font-weight: 300;
+	position: relative;
+		top: 10px;
+		left: -10px;
+}
+.theme.add-new .theme-screenshot:hover span:before {
+	color: #0074a2;
+}
+/*
+ * The search form
+ */
+#theme-search {
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-left: 20px;
 }
 /**
  * Basic Responsive structure...

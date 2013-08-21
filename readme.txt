@@ -18,7 +18,11 @@ Discussions will happen at http://make.wordpress.org/ui/ if you'd like to partic
 
 == Changelog ==
 
+= 0.2 =
+* Implements basic search through your theme collection.
+* Adds "add new theme" block.
+
 = 0.1 =
-* Initial pass
-* Sets up a Backbone.js rendering of installed theme base
-* Flexible design with current active theme showing first
+* Initial pass.
+* Sets up a Backbone.js rendering of installed theme base.
+* Flexible design with current active theme showing first.

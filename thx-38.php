@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.1
+Version: 0.2
 Author: THX_38 Team
 */
 
@@ -34,6 +34,7 @@ class THX_38 {
 		<?php
 
 		self::theme_template();
+		self::search_template();
 
 		// Admin footer
 		require( './admin-footer.php' );
@@ -91,6 +92,7 @@ class THX_38 {
 			'themes'   => $this->get_themes(),
 			'settings' => array(
 				'active' => __( 'Active' ),
+				'add_new' => __( 'Add New Theme' ),
 			)
 		) );
 	}
@@ -110,6 +112,14 @@ class THX_38 {
 			<% } %>
 		</script>
 		<?php
+	}
+
+	public function search_template() {
+		?>
+		<script id="theme-search-template" type="text/template">
+			<input type="text" name="theme-search" id="theme-search" placeholder="Search..." />
+		</script>
+	<?php
 	}
 
 }
