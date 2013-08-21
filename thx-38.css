@@ -1,0 +1,145 @@
+/**
+ * THX38 styles...
+ *
+ * Note: it expects mp6 plugin to be active as this is based on that design of the admin.
+ */
+#themes {
+	margin-left: -2%;
+	max-width: 102%;
+	padding: 20px 0 100px;
+}
+#appearance h2,
+.search-form {
+	display: inline-block;
+}
+/**
+ * Main theme element
+ * (has flexible margins)
+ */
+.theme {
+	cursor: pointer;
+	float: left;
+	margin: 0 0 2.4% 2%;
+	position: relative;
+	width: 23%;
+}
+.theme:hover,
+.theme:focus {
+	background: #fff;
+	cursor: pointer;
+}
+/* Theme title */
+.theme-name {
+	font-size: 15px;
+	font-weight: 400;
+	margin-left: 5%;
+}
+/*
+ * Theme Screenshot
+ *
+ * Has a fixed aspect ratio of 1.5 to 1 regardless of screenshot size
+ * It is also responsive.
+ */
+.theme .theme-screenshot {
+	border: 1px solid #fff;
+	box-shadow: 0 0 10px rgba( 0, 0, 0, 0.1 );
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+}
+.theme .theme-screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 66.666666%; /* using a 3/2 aspect ratio */
+}
+.theme .theme-screenshot img {
+	height: auto;
+	position: absolute;
+		left: 0;
+		top: 0;
+	width: 100%;
+}
+/*
+ * The currently active theme
+ * is highlighted using the WP blue.
+ */
+.theme.active {
+	background: #0074a2;
+}
+.theme.active .theme-name {
+	color: #fff;
+}
+.theme.active .current-label {
+	color: rgba( 255, 255, 255, 0.5 );
+	font-size: 14px;
+	position: absolute;
+		right: 5%;
+		bottom: 15px;
+}
+/*
+ * Experiment: allows to scroll through the whole theme
+ * If a theme includes the whole page, it could be a neat detail.
+ */
+.theme.active .theme-screenshot {
+	overflow-y: scroll;
+}
+/*
+ * Add new theme
+ */
+.theme.add-new .theme-screenshot {
+	background: #fff;
+}
+.theme.add-new .theme-screenshot span {
+	color: #999;
+	font-size: 18px;
+	position: absolute;
+		top: 40%;
+	text-align: center;
+	width: 100%;
+}
+.theme.add-new .theme-screenshot span:before {
+	font: normal 30px/1 'dashicons' !important;
+	color: #bbb;
+	display: inline-block;
+	content: '\f132';
+	font-weight: 300;
+	position: relative;
+		top: 10px;
+		left: -10px;
+}
+.theme.add-new .theme-screenshot:hover span:before {
+	color: #0074a2;
+}
+/*
+ * The search form
+ */
+#theme-search {
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-left: 20px;
+}
+/**
+ * Basic Responsive structure...
+ *
+ * Shuffles theme columns around based on screen width
+ */
+@media ( max-width: 1400px ) {
+	.theme {
+		width: 31%;
+	}
+}
+@media ( max-width: 840px ) {
+	.theme {
+		width: 48%;
+		margin-right: 0;
+	}
+}
+@media ( max-width: 440px ) {
+	.theme {
+		width: 98%;
+		margin-right: 0;
+	}
+}
