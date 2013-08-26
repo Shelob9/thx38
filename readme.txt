@@ -18,6 +18,10 @@ Discussions will happen at http://make.wordpress.org/ui/ if you'd like to partic
 
 == Changelog ==
 
+= 0.3 =
+* Implements expanded single theme views as an overlay when clicking on a theme.
+* Style updates.
+
 = 0.2 =
 * Implements basic search through your theme collection.
 * Adds "add new theme" block.

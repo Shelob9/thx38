@@ -25,7 +25,7 @@
 			self.view.render();
 			self.$el.append( self.view.el );
 
-			// Other views (search, filters, single-view) will go here...
+			// Search form
 			self.renderSearch();
 		},
 
@@ -40,7 +40,7 @@
 
 			self.view.render();
 			// Append after screen title
-			$( '#appearance h2' ).after( self.view.el );
+			this.$el.find( '> h2' ).after( self.view.el );
 		}
 	});
 
@@ -108,6 +108,15 @@
 			$( '#theme-template' ).html()
 		),
 
+		// The HTML template for the theme overlay
+		overlay: _.template(
+			$( '#theme-single-template' ).html()
+		),
+
+		events: {
+			'click': 'expand'
+		},
+
 		render: function() {
 			var self = this,
 				data = self.model.toJSON();
@@ -120,6 +129,29 @@
 			if ( this.model.has( 'active' ) ) {
 				this.$el.addClass( 'active' );
 			}
+		},
+
+		// Single theme overlay
+		// shown when clicking a theme
+		expand: function() {
+			var self = this,
+				container = $( '#appearance' ),
+				slug, data;
+
+			data = self.model.toJSON();
+
+			// Hide all themes so window height resets...
+			container.find( '.theme' ).hide();
+
+			// Append theme overlay
+			self.$el.parent().append( self.overlay( data ) );
+
+			// Closing overlay...
+			container.on( 'click', '.back', function() {
+				// Restore theme grid visibility and removes overlay
+				container.find( '.theme' ).show();
+				$( '#theme-overlay' ).remove();
+			});
 		}
 	});
 

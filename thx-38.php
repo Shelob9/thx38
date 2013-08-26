@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.2
+Version: 0.3
 Author: THX_38 Team
 */
 
@@ -33,8 +33,10 @@ class THX_38 {
 		</div>
 		<?php
 
+		// Get the templates
 		self::theme_template();
 		self::search_template();
+		self::theme_single_template();
 
 		// Admin footer
 		require( './admin-footer.php' );
@@ -43,7 +45,7 @@ class THX_38 {
 
 	/**
 	 * Get the themes and prepare the JS object
-	 * Sets attributes 'id' 'name' 'screenshot' 'active' ...
+	 * Sets attributes 'id' 'name' 'screenshot' 'description' 'author' 'version' 'active' ...
 	 *
 	 * @uses wp_get_themes self::get_current_theme
 	 * @return array theme data
@@ -60,6 +62,9 @@ class THX_38 {
 				'id' => $slug,
 				'name' => $theme->get( 'Name' ),
 				'screenshot' => $theme->get_screenshot(),
+				'description' => $theme->get( 'Description' ),
+				'author' => $theme->get( 'Author' ),
+				'version' => $theme->Version,
 				'active' => ( $slug == self::get_current_theme() ) ? true : NULL,
 			);
 		}
@@ -110,14 +115,39 @@ class THX_38 {
 			<% if ( active ) { %>
 				<span class="current-label"><?php esc_html_e( 'Active' ); ?></span>
 			<% } %>
+			<a class="button button-secondary">Activate</a>
 		</script>
 		<?php
 	}
 
+	/**
+	 * Underscores template for search form
+	 */
 	public function search_template() {
 		?>
 		<script id="theme-search-template" type="text/template">
 			<input type="text" name="theme-search" id="theme-search" placeholder="Search..." />
+		</script>
+	<?php
+	}
+
+	/**
+	 * Underscores template for single Theme views
+	 * Displays full theme information, including description,
+	 * author, version, larger screenshots.
+	 */
+	public function theme_single_template() {
+		?>
+		<script id="theme-single-template" type="text/template">
+			<div id="theme-overlay">
+				<h2 class="back button"><?php esc_html_e( 'Back to Themes' ); ?></h2>
+				<div class="theme-wrap">
+					<h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
+					<h4 class="theme-author">By <%= author %></h4>
+					<img src="<%= screenshot %>" alt="" />
+					<p class="theme-description"><%= description %></p>
+				</div>
+			</div>
 		</script>
 	<?php
 	}
