@@ -34,15 +34,15 @@
 	font-weight: 400;
 	margin-left: 5%;
 }
-/* Activate button, shown on hover */
+/* Activate and Customize buttons, shown on hover */
 .theme .button {
 	display: none;
 	position: absolute;
 		right: 5%;
 		bottom: 10px;
 }
-.theme:hover .button,
-.theme:focus .button {
+.theme:hover .button-secondary,
+.theme:focus .button-secondary {
 	display: block;
 }
 /*
@@ -53,10 +53,12 @@
  */
 .theme .theme-screenshot {
 	border: 1px solid #fff;
-	box-shadow: 0 0 10px rgba( 0, 0, 0, 0.1 );
+	/*box-shadow: 0 0 10px rgba( 0, 0, 0, 0.1 );*/
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.08 );
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	display: block;
 	overflow: hidden;
 	position: relative;
 }
@@ -89,8 +91,11 @@
 		right: 5%;
 		bottom: 15px;
 }
-.theme.active:hover .button {
+.theme.active:hover .button-secondary {
 	display: none;
+}
+.theme.active:hover .button-primary {
+	display: block;
 }
 /*
  * Experiment: allows to scroll through the whole theme
@@ -124,7 +129,7 @@
 		left: -10px;
 }
 .theme.add-new .theme-screenshot:hover span:before {
-	color: #0074a2;
+	color: #222;
 }
 /*
  * The search form
@@ -154,14 +159,62 @@
 	margin-bottom: 20px;
 }
 #theme-overlay .theme-wrap {
+	position: relative;
 }
-#theme-overlay img {
-	border: 2px solid #fff;
-	display: block;
+/*
+ * Theme Screenshots gallery
+ */
+#theme-overlay .theme-screenshots {
 	float: right;
 	margin-right: 20px;
 	margin-left: 30px;
+	width: 45%;
 }
+#theme-overlay .screenshot + .screenshot {
+	float: left;
+	margin: 10px 10px 0 0;
+	width: 22%;
+}
+/* First screenshot, shown big */
+#theme-overlay .screenshot {
+	border: 1px solid #fff;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+}
+#theme-overlay .screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 66.66666%; /* using a 3/2 aspect ratio */
+}
+#theme-overlay .screenshot img {
+	cursor: pointer;
+	height: auto;
+	position: absolute;
+		left: 0;
+		top: 0;
+	width: 100%;
+}
+/* Other screenshots, shown small and square */
+#theme-overlay .screenshot + .screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 100%; /* using a 1/1 aspect ratio */
+}
+#theme-overlay .screenshot + .screenshot img {
+	cursor: pointer;
+	height: auto;
+	position: absolute;
+		left: -25%;
+		top: 0;
+	height: 100%;
+	width: auto;
+}
+/*
+ * Theme heading information
+ */
 #theme-overlay .theme-name {
 	color: #222;
 	font-size: 48px;
@@ -190,6 +243,8 @@
 	line-height: 28px;
 	margin: 40px 5px;
 	max-width: 600px;
+}
+#theme-overlay .theme-actions {
 }
 /**
  * Basic Responsive structure...

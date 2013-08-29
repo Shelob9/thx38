@@ -124,7 +124,8 @@
 			self.activeTheme();
 			self.$el.html( self.html( data ) );
 		},
-		// Adds a class the currently active theme
+
+		// Adds a class to the currently active theme
 		activeTheme: function() {
 			if ( this.model.has( 'active' ) ) {
 				this.$el.addClass( 'active' );
@@ -151,6 +152,19 @@
 				// Restore theme grid visibility and removes overlay
 				container.find( '.theme' ).show();
 				$( '#theme-overlay' ).remove();
+			});
+
+			self.screenshotGallery();
+		},
+
+		screenshotGallery: function() {
+			var screenshots = $( '#theme-screenshots' );
+
+			// Clicking on a screenshot thumbnail drops it
+			// at the top of the stack in a larger size
+			screenshots.on( 'click', 'div.screenshot', function() {
+				$( this ).remove();
+				screenshots.prepend( $( this ) );
 			});
 		}
 	});
@@ -194,7 +208,7 @@
 			});
 
 			// 'Add new theme' element shown at the end of the grid
-			self.$el.append( '<div class="theme add-new"><div class="theme-screenshot"><span>' + thx.Data.settings['add_new'] + '</span></div></div>' );
+			self.$el.append( '<div class="theme add-new"><a href="' + thx.Data.settings['install_uri'] + '" class="theme-screenshot"><span>' + thx.Data.settings['add_new'] + '</span></a></div>' );
 		},
 
 		// Grabs current theme and puts it at the beginning of the collection

@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.3
+Version: 0.4
 Author: THX_38 Team
 */
 
@@ -61,7 +61,7 @@ class THX_38 {
 			$data[] = array(
 				'id' => $slug,
 				'name' => $theme->get( 'Name' ),
-				'screenshot' => $theme->get_screenshot(),
+				'screenshot' => self::get_multiple_screenshots( $theme ),
 				'description' => $theme->get( 'Description' ),
 				'author' => $theme->get( 'Author' ),
 				'version' => $theme->Version,
@@ -98,6 +98,7 @@ class THX_38 {
 			'settings' => array(
 				'active' => __( 'Active' ),
 				'add_new' => __( 'Add New Theme' ),
+				'install_uri' => admin_url( 'theme-install.php' ),
 			)
 		) );
 	}
@@ -109,13 +110,14 @@ class THX_38 {
 		?>
 		<script id="theme-template" type="text/template">
 			<div class="theme-screenshot">
-				<img src="<%= screenshot %>" alt="" />
+				<img src="<%= screenshot[0] %>" alt="" />
 			</div>
 			<h3 class="theme-name"><%= name %></h3>
 			<% if ( active ) { %>
 				<span class="current-label"><?php esc_html_e( 'Active' ); ?></span>
 			<% } %>
-			<a class="button button-secondary">Activate</a>
+			<a class="button button-primary"><?php esc_html_e( 'Customize' ); ?></a>
+			<a class="button button-secondary"><?php esc_html_e( 'Activate' ); ?></a>
 		</script>
 		<?php
 	}
@@ -144,12 +146,48 @@ class THX_38 {
 				<div class="theme-wrap">
 					<h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
 					<h4 class="theme-author">By <%= author %></h4>
-					<img src="<%= screenshot %>" alt="" />
+
+					<div class="theme-screenshots" id="theme-screenshots">
+					<% _.each ( screenshot, function( image ) { %>
+						<div class="screenshot"><img src="<%= image %>" alt="" /></div>
+					<% }); %>
+					</div>
+
 					<p class="theme-description"><%= description %></p>
 				</div>
 			</div>
 		</script>
 	<?php
+	}
+
+	/**
+	 * Method to get an array of all the screenshots a theme has
+	 * It checks for files in the form of 'screenshot-n' at the root
+	 * of a theme directory.
+	 *
+	 * @param a theme object
+	 * @returns array screenshot urls (first element is default screenshot)
+	 */
+	protected function get_multiple_screenshots( $theme ) {
+		$base = $theme->get_stylesheet_directory_uri();
+		$set = array( 2, 3, 4, 5 );
+
+		// Screenshots array starts with default screenshot at position [0]
+		$screenshots = array( $theme->get_screenshot() );
+
+		// Check how many other screenshots a theme has
+		foreach ( $set as $number ) {
+			// Hard-coding file path for pngs...
+			$file = '/screenshot-' . $number . '.png';
+			$path = $theme->template_dir . $file;
+
+			if ( ! file_exists( $path ) )
+				continue;
+
+			$screenshots[] = $base . $file;
+		}
+
+		return $screenshots;
 	}
 
 }
