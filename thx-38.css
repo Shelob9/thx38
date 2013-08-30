@@ -1,0 +1,280 @@
+/**
+ * THX38 styles...
+ *
+ * Note: it expects mp6 plugin to be active as this is based on that design of the admin.
+ */
+#themes {
+	margin-left: -2%;
+	max-width: 102%;
+	padding: 20px 0 100px;
+}
+#appearance h2 .button {
+	margin-left: 20px;
+	position: relative;
+		top: -4px;
+}
+/**
+ * Main theme element
+ * (has flexible margins)
+ */
+.theme {
+	cursor: pointer;
+	float: left;
+	margin: 0 0 2.4% 2%;
+	position: relative;
+	width: 23%;
+}
+.theme:hover,
+.theme:focus {
+	background: #fff;
+	cursor: pointer;
+}
+/* Theme title */
+.theme-name {
+	font-size: 15px;
+	font-weight: 400;
+	margin-left: 5%;
+}
+/* Activate and Customize buttons, shown on hover */
+.theme .button {
+	display: none;
+	position: absolute;
+		right: 5%;
+		bottom: 10px;
+}
+.theme:hover .button-secondary,
+.theme:focus .button-secondary {
+	display: block;
+}
+/*
+ * Theme Screenshot
+ *
+ * Has a fixed aspect ratio of 1.5 to 1 regardless of screenshot size
+ * It is also responsive.
+ */
+.theme .theme-screenshot {
+	border: 1px solid #fff;
+	/*box-shadow: 0 0 10px rgba( 0, 0, 0, 0.1 );*/
+	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.08 );
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+.theme .theme-screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 66.666666%; /* using a 3/2 aspect ratio */
+}
+.theme .theme-screenshot img {
+	height: auto;
+	position: absolute;
+		left: 0;
+		top: 0;
+	width: 100%;
+}
+/*
+ * The currently active theme
+ * is highlighted using the WP blue.
+ */
+.theme.active {
+	background: #0074a2;
+}
+.theme.active .theme-name {
+	color: #fff;
+}
+.theme.active .current-label {
+	color: rgba( 255, 255, 255, 0.5 );
+	font-size: 14px;
+	position: absolute;
+		right: 5%;
+		bottom: 15px;
+}
+.theme.active:hover .button-secondary {
+	display: none;
+}
+.theme.active:hover .button-primary {
+	display: block;
+}
+/*
+ * Experiment: allows to scroll through the whole theme
+ * If a theme includes the whole page, it could be a neat detail.
+ */
+.theme.active .theme-screenshot {
+	overflow-y: scroll;
+}
+/*
+ * Add new theme
+ */
+.theme.add-new .theme-screenshot {
+	background: #fff;
+}
+.theme.add-new .theme-screenshot span {
+	color: #999;
+	font-size: 18px;
+	position: absolute;
+		top: 40%;
+	text-align: center;
+	width: 100%;
+}
+.theme.add-new .theme-screenshot span:before {
+	font: normal 30px/1 'dashicons' !important;
+	color: #bbb;
+	display: inline-block;
+	content: '\f132';
+	font-weight: 300;
+	position: relative;
+		top: 10px;
+		left: -10px;
+}
+.theme.add-new .theme-screenshot:hover span:before {
+	color: #222;
+}
+/*
+ * The search form
+ */
+.search-form {
+	position: absolute;
+		right: 20px;
+		top: 20px;
+}
+#theme-search {
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-left: 20px;
+}
+/*
+ * Theme Overlay
+ */
+#theme-overlay {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	padding: 10px 0;
+}
+#theme-overlay h2 {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+#theme-overlay .theme-wrap {
+	position: relative;
+}
+/*
+ * Theme Screenshots gallery
+ */
+#theme-overlay .theme-screenshots {
+	float: right;
+	margin-right: 20px;
+	margin-left: 30px;
+	width: 45%;
+}
+#theme-overlay .screenshot + .screenshot {
+	float: left;
+	margin: 10px 10px 0 0;
+	width: 22%;
+}
+/* First screenshot, shown big */
+#theme-overlay .screenshot {
+	background: #000;
+	border: 1px solid #fff;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+}
+#theme-overlay .screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 66.66666%; /* using a 3/2 aspect ratio */
+}
+#theme-overlay .screenshot img {
+	cursor: pointer;
+	height: auto;
+	position: absolute;
+		left: 0;
+		top: 0;
+	width: 100%;
+}
+/* Other screenshots, shown small and square */
+#theme-overlay .screenshot + .screenshot:after {
+	content: '';
+	display: block;
+	padding-top: 100%; /* using a 1/1 aspect ratio */
+}
+#theme-overlay .screenshot + .screenshot img {
+	cursor: pointer;
+	height: auto;
+	position: absolute;
+		left: -25%;
+		top: 0;
+	height: 100%;
+	width: auto;
+}
+#theme-overlay .screenshot.selected img {
+	opacity: 0.3;
+}
+/*
+ * Theme heading information
+ */
+#theme-overlay .theme-name {
+	color: #222;
+	font-size: 48px;
+	font-weight: 100;
+	margin: 20px 0 0;
+}
+#theme-overlay .theme-version {
+	background: #333;
+	color: #fff;
+	font-size: 13px;
+	margin-left: 20px;
+	padding: 4px 8px;
+	position: relative;
+		top: -4px;
+}
+#theme-overlay .theme-author {
+	color: #686868;
+	font-size: 18px;
+	font-weight: 300;
+	margin: 20px 0 30px;
+}
+#theme-overlay .theme-description {
+	color: #555;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 28px;
+	margin: 40px 5px;
+	max-width: 600px;
+}
+#theme-overlay .theme-actions {
+}
+/**
+ * Basic Responsive structure...
+ *
+ * Shuffles theme columns around based on screen width
+ */
+@media ( max-width: 1400px ) {
+	.theme {
+		width: 31%;
+	}
+}
+@media ( max-width: 840px ) {
+	.theme {
+		width: 48%;
+		margin-right: 0;
+	}
+}
+@media ( max-width: 440px ) {
+	.theme {
+		width: 98%;
+		margin-right: 0;
+	}
+}
