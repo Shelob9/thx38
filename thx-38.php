@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.4
+Version: 0.4.1
 Author: THX_38 Team
 */
 
@@ -29,7 +29,7 @@ class THX_38 {
 
 		?>
 		<div id="appearance" class="wrap">
-			<h2><?php esc_html_e( 'Themes' ); ?></h2>
+			<h2><?php esc_html_e( 'Themes' ); ?><a href="<?php echo admin_url( 'theme-install.php' ); ?>" class="button button-secondary">Add New</a></h2>
 		</div>
 		<?php
 
@@ -117,7 +117,7 @@ class THX_38 {
 				<span class="current-label"><?php esc_html_e( 'Active' ); ?></span>
 			<% } %>
 			<a class="button button-primary"><?php esc_html_e( 'Customize' ); ?></a>
-			<a class="button button-secondary"><?php esc_html_e( 'Activate' ); ?></a>
+			<a class="button button-secondary"><?php esc_html_e( 'Preview' ); ?></a>
 		</script>
 		<?php
 	}
@@ -148,9 +148,16 @@ class THX_38 {
 					<h4 class="theme-author">By <%= author %></h4>
 
 					<div class="theme-screenshots" id="theme-screenshots">
-					<% _.each ( screenshot, function( image ) { %>
-						<div class="screenshot"><img src="<%= image %>" alt="" /></div>
-					<% }); %>
+						<div class="screenshot first"><img src="<%= screenshot[0] %>" alt="" /></div>
+					<%
+						if ( _.size( screenshot ) > 1 ) {
+							_.each ( screenshot, function( image ) {
+					%>
+							<div class="screenshot thumb"><img src="<%= image %>" alt="" /></div>
+					<%
+							});
+						}
+					%>
 					</div>
 
 					<p class="theme-description"><%= description %></p>

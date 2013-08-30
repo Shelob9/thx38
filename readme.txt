@@ -18,6 +18,10 @@ Discussions will happen at the WordPress make p2s. Check http://make.wordpress.o
 
 == Changelog ==
 
+= 0.4.1 =
+* Reworked screenshot galleries to always show a persistent row of screenshots.
+* Puts an add-new link next to the screen title following the conventions of mp6.
+
 = 0.4 =
 * Multiple screenshots support in the form of 'screenshot-n.png' where n is a number in the range of 2-5.
 * Single theme views show a complete screenshot gallery when available.

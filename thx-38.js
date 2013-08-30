@@ -158,13 +158,20 @@
 		},
 
 		screenshotGallery: function() {
-			var screenshots = $( '#theme-screenshots' );
+			var screenshots = $( '#theme-screenshots' ),
+				img;
+
+			screenshots.find( 'div.first' ).next().addClass( 'selected' );
 
 			// Clicking on a screenshot thumbnail drops it
 			// at the top of the stack in a larger size
-			screenshots.on( 'click', 'div.screenshot', function() {
-				$( this ).remove();
-				screenshots.prepend( $( this ) );
+			screenshots.on( 'click', 'div.thumb', function() {
+				current = $( this );
+				img = $( this ).find( 'img' ).clone();
+
+				current.siblings( '.first' ).html( img );
+				current.siblings( '.selected' ).removeClass( 'selected' );
+				current.addClass( 'selected' );
 			});
 		}
 	});

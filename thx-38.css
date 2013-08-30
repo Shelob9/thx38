@@ -8,9 +8,10 @@
 	max-width: 102%;
 	padding: 20px 0 100px;
 }
-#appearance h2,
-.search-form {
-	display: inline-block;
+#appearance h2 .button {
+	margin-left: 20px;
+	position: relative;
+		top: -4px;
 }
 /**
  * Main theme element
@@ -134,6 +135,11 @@
 /*
  * The search form
  */
+.search-form {
+	position: absolute;
+		right: 20px;
+		top: 20px;
+}
 #theme-search {
 	font-size: 18px;
 	font-weight: 300;
@@ -177,6 +183,7 @@
 }
 /* First screenshot, shown big */
 #theme-overlay .screenshot {
+	background: #000;
 	border: 1px solid #fff;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -211,6 +218,9 @@
 		top: 0;
 	height: 100%;
 	width: auto;
+}
+#theme-overlay .screenshot.selected img {
+	opacity: 0.3;
 }
 /*
  * Theme heading information
