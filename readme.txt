@@ -18,6 +18,9 @@ Discussions will happen at the WordPress make p2s. Check http://make.wordpress.o
 
 == Changelog ==
 
+= 0.4.2 =
+* Multisite path fix.
+
 = 0.4.1 =
 * Reworked screenshot galleries to always show a persistent row of screenshots.
 * Puts an add-new link next to the screen title following the conventions of mp6.

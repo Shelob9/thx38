@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.4.1
+Version: 0.4.2
 Author: THX_38 Team
 */
 
@@ -25,7 +25,7 @@ class THX_38 {
 	function themes_screen() {
 
 		// Admin header
-		require_once( './admin-header.php' );
+		require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 		?>
 		<div id="appearance" class="wrap">
@@ -39,7 +39,7 @@ class THX_38 {
 		self::theme_single_template();
 
 		// Admin footer
-		require( './admin-footer.php' );
+		require( ABSPATH . 'wp-admin/admin-footer.php');
 		exit;
 	}
 
