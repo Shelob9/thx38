@@ -1,5 +1,5 @@
 === THX38 ===
-Contributors: wordpressdotorg, matveb, samuelsidler, shaunandrews, melchoyce
+Contributors: wordpressdotorg, matveb, samuelsidler, shaunandrews, melchoyce, shelob9
 Requires at least: 3.6
 Tested up to: 3.6
 Stable tag: trunk
