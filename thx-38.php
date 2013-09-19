@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.4.2
+Version: 0.4.3
 Author: THX_38 Team
 */
 
@@ -64,6 +64,7 @@ class THX_38 {
 				'screenshot' => self::get_multiple_screenshots( $theme ),
 				'description' => $theme->get( 'Description' ),
 				'author' => $theme->get( 'Author' ),
+				'authorURI' => $theme->get( 'AuthorURI' ),
 				'version' => $theme->Version,
 				'active' => ( $slug == self::get_current_theme() ) ? true : NULL,
 			);
@@ -96,7 +97,7 @@ class THX_38 {
 		wp_localize_script( 'thx-38', '_THX38', array(
 			'themes'   => $this->get_themes(),
 			'settings' => array(
-				'active' => __( 'Active' ),
+				'active' => __( 'Active Theme' ),
 				'add_new' => __( 'Add New Theme' ),
 				'install_uri' => admin_url( 'theme-install.php' ),
 			)
@@ -114,10 +115,10 @@ class THX_38 {
 			</div>
 			<h3 class="theme-name"><%= name %></h3>
 			<% if ( active ) { %>
-				<span class="current-label"><?php esc_html_e( 'Active' ); ?></span>
+				<span class="current-label"><%= _THX38.settings['active'] %></span>
 			<% } %>
 			<a class="button button-primary"><?php esc_html_e( 'Customize' ); ?></a>
-			<a class="button button-secondary"><?php esc_html_e( 'Preview' ); ?></a>
+			<a class="button button-secondary" href="<?php echo admin_url( 'customize.php?theme=' ); ?><%= id %>"><?php esc_html_e( 'Preview' ); ?></a>
 		</script>
 		<?php
 	}
@@ -145,7 +146,7 @@ class THX_38 {
 				<h2 class="back button"><?php esc_html_e( 'Back to Themes' ); ?></h2>
 				<div class="theme-wrap">
 					<h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
-					<h4 class="theme-author">By <%= author %></h4>
+					<h4 class="theme-author">By <a href="<%= authorURI %>"><%= author %></a></h4>
 
 					<div class="theme-screenshots" id="theme-screenshots">
 						<div class="screenshot first"><img src="<%= screenshot[0] %>" alt="" /></div>

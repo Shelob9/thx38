@@ -18,6 +18,11 @@ Discussions will happen at the WordPress make p2s. Check http://make.wordpress.o
 
 == Changelog ==
 
+= 0.4.3 =
+* Adds theme author url.
+* Converts screenshots gallery into dot-navigation.
+* Style cleanup and improvements.
+
 = 0.4.2 =
 * Multisite path fix.
 
