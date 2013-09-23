@@ -18,6 +18,10 @@ Discussions will happen at the WordPress make p2s. Check http://make.wordpress.o
 
 == Changelog ==
 
+= 0.5 =
+* First pass at browsing themes screen.
+* Many style improvements.
+
 = 0.4.3 =
 * Adds theme author url.
 * Converts screenshots gallery into dot-navigation.
