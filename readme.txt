@@ -18,6 +18,9 @@ Discussions will happen at the WordPress make p2s. Check http://make.wordpress.o
 
 == Changelog ==
 
+= 0.5.1 =
+* Adds theme-action buttons to activate and preview themes.
+
 = 0.5 =
 * First pass at browsing themes screen.
 * Many style improvements.

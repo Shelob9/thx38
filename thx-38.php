@@ -63,14 +63,16 @@ class THX_38 {
 
 		foreach( $themes as $slug => $theme ) {
 			$data[] = array(
-				'id'          => $slug,
-				'name'        => $theme->get( 'Name' ),
-				'screenshot'  => self::get_multiple_screenshots( $theme ),
-				'description' => $theme->get( 'Description' ),
-				'author'      => $theme->get( 'Author' ),
-				'authorURI'   => $theme->get( 'AuthorURI' ),
-				'version'     => $theme->Version,
-				'active'      => ( $slug == self::get_current_theme() ) ? true : NULL,
+				'id'           => $slug,
+				'name'         => $theme->get( 'Name' ),
+				'screenshot'   => self::get_multiple_screenshots( $theme ),
+				'description'  => $theme->get( 'Description' ),
+				'author'       => $theme->get( 'Author' ),
+				'authorURI'    => $theme->get( 'AuthorURI' ),
+				'version'      => $theme->Version,
+				'active'       => ( $slug == self::get_current_theme() ) ? true : NULL,
+				'activateURI'  => wp_nonce_url( "themes.php?action=activate&amp;template=" . urlencode( $theme->Template ) . "&amp;stylesheet=" . urlencode( $slug ), 'switch-theme_' . $slug ),
+				'customizeURI' => admin_url( 'customize.php?=' . $slug ),
 			);
 		}
 
@@ -263,7 +265,7 @@ class THX_38 {
 				<span class="current-label"><%= _THX38.settings['active'] %></span>
 			<% } %>
 			<a class="button button-primary" href="<%= _THX38.settings['customizeURI'] %>"><?php esc_html_e( 'Customize' ); ?></a>
-			<a class="button button-secondary preview" href="<?php echo admin_url( 'customize.php?theme=' ); ?><%= id %>"><?php esc_html_e( 'Preview' ); ?></a>
+			<a class="button button-secondary preview" href="<%= customizeURI %>"><?php esc_html_e( 'Preview' ); ?></a>
 		</script>
 		<?php
 	}
@@ -288,7 +290,18 @@ class THX_38 {
 		?>
 		<script id="theme-single-template" type="text/template">
 			<div id="theme-overlay">
-				<h2 class="back button"><?php esc_html_e( 'Back to Themes' ); ?></h2>
+				<a class="back button"><?php esc_html_e( 'Back to Themes' ); ?></a>
+				<div class="theme-actions">
+					<div class="active-theme">
+						<a href="<%= _THX38.settings['customizeURI'] %>" class="button button-primary">Customize</a>
+						<a href="" class="button button-secondary">Widgets</a>
+						<a href="" class="button button-secondary">Menus</a>
+					</div>
+					<div class="inactive-theme">
+						<a href="<%= activateURI %>" class="button button-primary">Activate</a>
+						<a href="<%= customizeURI %>" class="button button-secondary">Preview</a>
+					</div>
+				</div>
 				<div class="theme-wrap">
 					<h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
 					<h4 class="theme-author">By <a href="<%= authorURI %>"><%= author %></a></h4>

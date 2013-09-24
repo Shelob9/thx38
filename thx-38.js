@@ -159,6 +159,7 @@
 		activeTheme: function() {
 			if ( this.model.has( 'active' ) ) {
 				this.$el.addClass( 'active' );
+				$( '#theme-overlay' ).addClass( 'active' );
 			}
 		},
 
@@ -187,6 +188,8 @@
 				container.find( '.theme' ).show();
 				$( '#theme-overlay' ).remove();
 			});
+
+			self.activeTheme();
 
 			// Renders a screenshot gallery with *dot* navigation
 			self.screenshotGallery();
