@@ -72,7 +72,7 @@ class THX_38 {
 				'version'      => $theme->Version,
 				'active'       => ( $slug == self::get_current_theme() ) ? true : NULL,
 				'activateURI'  => wp_nonce_url( "themes.php?action=activate&amp;template=" . urlencode( $theme->Template ) . "&amp;stylesheet=" . urlencode( $slug ), 'switch-theme_' . $slug ),
-				'customizeURI' => admin_url( 'customize.php?=' . $slug ),
+				'customizeURI' => admin_url( 'customize.php?theme=' . $slug ),
 			);
 		}
 
