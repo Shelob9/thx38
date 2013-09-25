@@ -3,7 +3,7 @@
 Plugin Name: THX_38
 Plugin URI:
 Description: THX stands for THeme eXperience. A plugin that rebels against their rigidly controlled themes.php in search for hopeful freedom in WordPress 3.8, or beyond. <strong>This is only for development work and the brave of heart, as it totally breaks themes.php</strong>.
-Version: 0.5
+Version: 0.5.1
 Author: THX_38 Team
 */
 
