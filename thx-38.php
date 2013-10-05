@@ -244,6 +244,36 @@ class THX_38 {
 		return $themes;
 	}
 
+    /**
+     * Generate Header and Background buttons if supported
+     *
+     * @returns A link to editor for theme feature (custom header, custom background) is supported
+     * @uses current_theme_supports()
+     */
+
+    public function theme_feature_page( $feature ) {
+        if (current_theme_supports( $feature )  ) {
+            if ( $feature === 'custom-background' ) {
+                $page = admin_url( 'themes.php?page=custom-background');
+                $name = 'Background';
+            }
+            if ($feature === 'custom-header') {
+                $page = admin_url( 'themes.php?page=custom-header' );
+                $name = 'Header';
+            }
+            if ( $feature === 'custom-header' || 'custom-background' ) {
+                $out = '<a href="'.$page.'" class="button button-secondary">'.$name.'</a>';
+                return $out;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
 
 	/**
 	 * ------------------------
