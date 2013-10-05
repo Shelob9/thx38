@@ -294,8 +294,8 @@ class THX_38 {
 				<div class="theme-actions">
 					<div class="active-theme">
 						<a href="<%= _THX38.settings['customizeURI'] %>" class="button button-primary">Customize</a>
-						<a href="" class="button button-secondary">Widgets</a>
-						<a href="" class="button button-secondary">Menus</a>
+                        <a href="<?php echo admin_url( 'widgets.php'); ?>" class="button button-secondary">Widgets</a>
+                        <a href="<?php echo admin_url( 'nav-menus.php'); ?>" class="button button-secondary">Menus</a>
 					</div>
 					<div class="inactive-theme">
 						<a href="<%= activateURI %>" class="button button-primary">Activate</a>
