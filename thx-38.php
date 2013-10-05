@@ -311,50 +311,52 @@ class THX_38 {
 	<?php
 	}
 
-	/**
-	 * Underscores template for single Theme views
-	 * Displays full theme information, including description,
-	 * author, version, larger screenshots.
-	 */
-	public function theme_single_template() {
-		?>
-		<script id="theme-single-template" type="text/template">
-			<div id="theme-overlay">
-				<a class="back button"><?php esc_html_e( 'Back to Themes' ); ?></a>
-				<div class="theme-actions">
-					<div class="active-theme">
-						<a href="<%= _THX38.settings['customizeURI'] %>" class="button button-primary">Customize</a>
+    /**
+     * Underscores template for single Theme views
+     * Displays full theme information, including description,
+     * author, version, larger screenshots.
+     */
+    public function theme_single_template() {
+        ?>
+        <script id="theme-single-template" type="text/template">
+            <div id="theme-overlay">
+                <a class="back button"><?php esc_html_e( 'Back to Themes' ); ?></a>
+                <div class="theme-actions">
+                    <div class="active-theme">
+                        <a href="<%= _THX38.settings['customizeURI'] %>" class="button button-primary">Customize</a>
                         <a href="<?php echo admin_url( 'widgets.php'); ?>" class="button button-secondary">Widgets</a>
                         <a href="<?php echo admin_url( 'nav-menus.php'); ?>" class="button button-secondary">Menus</a>
-					</div>
-					<div class="inactive-theme">
-						<a href="<%= activateURI %>" class="button button-primary">Activate</a>
-						<a href="<%= customizeURI %>" class="button button-secondary">Preview</a>
-					</div>
-				</div>
-				<div class="theme-wrap">
-					<h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
-					<h4 class="theme-author">By <a href="<%= authorURI %>"><%= author %></a></h4>
+                        <?php echo $this->theme_feature_page( 'custom-header' ); ?>
+                        <?php echo $this->theme_feature_page( 'custom-background' ); ?>
+                    </div>
+                    <div class="inactive-theme">
+                        <a href="<%= activateURI %>" class="button button-primary">Activate</a>
+                        <a href="<%= customizeURI %>" class="button button-secondary">Preview</a>
+                    </div>
+                </div>
+                <div class="theme-wrap">
+                    <h3 class="theme-name"><%= name %><span class="theme-version"><%= version %></span></h3>
+                    <h4 class="theme-author">By <a href="<%= authorURI %>"><%= author %></a></h4>
 
-					<div class="theme-screenshots" id="theme-screenshots">
-						<div class="screenshot first"><img src="<%= screenshot[0] %>" alt="" /></div>
-					<%
-						if ( _.size( screenshot ) > 1 ) {
-							_.each ( screenshot, function( image ) {
-					%>
-							<div class="screenshot thumb"><img src="<%= image %>" alt="" /></div>
-					<%
-							});
-						}
-					%>
-					</div>
+                    <div class="theme-screenshots" id="theme-screenshots">
+                        <div class="screenshot first"><img src="<%= screenshot[0] %>" alt="" /></div>
+                        <%
+                        if ( _.size( screenshot ) > 1 ) {
+                            _.each ( screenshot, function( image ) {
+                                %>
+                                <div class="screenshot thumb"><img src="<%= image %>" alt="" /></div>
+                            <%
+                            });
+                        }
+                        %>
+                    </div>
 
-					<p class="theme-description"><%= description %></p>
-				</div>
-			</div>
-		</script>
-	<?php
-	}
+                    <p class="theme-description"><%= description %></p>
+                </div>
+            </div>
+        </script>
+    <?php
+    }
 
 	/**
 	 * Underscores template for rendering the Theme views
